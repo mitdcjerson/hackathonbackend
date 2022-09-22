@@ -8,6 +8,7 @@ app.use(cors());
 
 const fact = require('../src/Data/fact.json');
 const fake = require('../src/Data/fake.json');
+const userinfo =require('../src/Data/user.json')
 let trainedModel = {};
 let sentenceEncoder = {}
 
@@ -90,6 +91,28 @@ app.post("/check", async (req, res) => {
 
     return res.json(predictedInfo);
 });
+
+
+app.post("/users",(req,res)=>{
+   
+ 
+    let status;
+     let jsondata =userinfo.find(c=>c.username==req.body.username && c.password==req.body.password);
+       
+       if(jsondata==undefined){
+          
+          status=0;
+            
+       }
+       else{
+        
+          status=1;
+       }
+           console.log("Status " ,status);
+           
+          return res.json(status);
+             
+      });
 
 
 app.listen(3002, () => {
