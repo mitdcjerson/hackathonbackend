@@ -43,14 +43,14 @@ app.post("/infos", (req, res) => {
         });
     }
 
-    if (!req.body.icon) {
+    if (!req.body.result) {
         return res.status(400).json({
-            "error": "icon not found"
+            "error": "result not found"
         });
     }
     const info = {
         name: req.body.name,
-        icon: req.body.icon
+        result: req.body.result
     };
 
     if(req.body.type === 0)
