@@ -51,21 +51,21 @@ app.get("/infos", (req, res) => {
 
 
 app.post("/infos", (req, res) => {
-
+    console.log("req body",req.body);
     if (!req.body.text) {
         return res.status(400).json({
             "error": "text not found"
         });
     }
 
-    if (!req.body.type) {
-        return res.status(400).json({
-            "error": "type not found"
-        });
-    }
+    // if (!req.body.type) {
+    //     return res.status(400).json({
+    //         "error": "type not found"
+    //     });
+    // }
     const info = {
         text: req.body.text,
-        result: req.body.type
+        result: req.body.type == 0 ? "FAKE": "FACTS"
     };
 
     if(req.body.type === 0)
