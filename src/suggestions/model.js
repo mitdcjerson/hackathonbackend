@@ -9,6 +9,7 @@ const MODEL_NAME = "suggestion-model";
 const N_CLASSES = 2;
 const FACT = "FACT";
 const FAKE = "FAKE";
+const UNCERTAIN = "UNCERTAIN";
 
 const encodeData = async (encoder, tasks) => {
   const sentences = tasks.map(t => t.text.toLowerCase());
@@ -70,7 +71,7 @@ const trainModel = async encoder => {
   return model;
 };
 
-const suggestIcon = async (model, encoder, taskName, threshold) => {
+const predictInfo = async (model, encoder, taskName, threshold) => {
     console.log("MODEL:" + model + "ENCODER: " + encoder, "TASKNAME: " + taskName, "THRESHOLD: "+ threshold )
   if (!taskName.trim().includes(" ")) {
     return null;
@@ -82,11 +83,20 @@ const suggestIcon = async (model, encoder, taskName, threshold) => {
   console.log(prediction[0] +"" + prediction[1]);
 
   if (prediction[0] > threshold) {
-    return FACT;
+    return {
+      result : prediction[0] * 100,
+      status: FACT
+    };
   } else if (prediction[1] > threshold) {
-    return FAKE;
+    return {
+      result : prediction[0] * 100,
+      status: FAKE
+    };
   } else {
-    return null;
+    return {
+      result : 0,
+      status: UNCERTAIN
+    };
   }
 };
 

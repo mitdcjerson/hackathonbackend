@@ -1,6 +1,6 @@
 import express, { request, response } from "express";
 import cors from "cors"
-import { suggestIcon, trainModel } from "./suggestions/model";
+import { predictInfo, trainModel } from "./suggestions/model";
 import * as use from "@tensorflow-models/universal-sentence-encoder"
 const app = express();
 app.use(express.json());
@@ -50,29 +50,32 @@ app.get("/infos", (req, res) => {
 
 
 app.post("/infos", (req, res) => {
-
+    console.log(req.body.text);
+    console.log(req.body.type);
     if (!req.body.text) {
         return res.status(400).json({
             "error": "text not found"
         });
     }
 
-    if (!req.body.type) {
-        return res.status(400).json({
-            "error": "type not found"
-        });
-    }
+    // if (!req.body.type) {
+    //     return res.status(400).json({
+    //         "error": "type not found"
+    //     });
+    // }
     const info = {
         text: req.body.text,
-        result: req.body.type
+        result: req.body.type == 0 ? "FAKE": "FACTS"
     };
 
-    if(req.body.type === 0)
+    if(req.body.type ==="FACTS")
     {
-        fake.push(info);
+      
+       fact.push(info);
     }
     else{
-        fact.push(info);
+        console.log("FAKE");
+        fake.push(info);
     }
 
     return res.json(info);
@@ -82,15 +85,10 @@ app.post("/check", async (req, res) => {
 
     const threshold = 0.30;
     console.log(req.body.text);
-    const predictedIcon = await suggestIcon(trainedModel, sentenceEncoder, req.body.text, threshold);
- 
-    Promise.all([predictedIcon]);
-    console.log(predictedIcon);
-    if (predictedIcon === undefined) {
-        res.status(404).send();
-    }
+    const predictedInfo = await predictInfo(trainedModel, sentenceEncoder, req.body.text, threshold);
+    console.log(predictedInfo);
 
-    return res.json(predictedIcon);
+    return res.json(predictedInfo);
 });
 
 
