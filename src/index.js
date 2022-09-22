@@ -36,17 +36,21 @@ app.get("/infos",(req,res)=>{
 
 
 app.post("/infos",(req,res)=>{
-    console.log(req);
-    return res.json(
-        [{
-             id: 1,
-             type: "type test",
-             text: "text test",
-             result: "test resut",
-             result2: req.type
+ console.log("Result " + req.body.text  +" -- " + req.body.type)
+    let newData=[
+        { "text": req.body.text , "result": req.body.type }
+    ];
 
-        } 
-    ]);
+    if(req.body.type==1){
+        fact.push(newData);
+    }
+    else if (req.body.type==0){
+        fake.push(newData);
+    }
+ 
+
+    return res.json(newData);
+       
 });
 
 
