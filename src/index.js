@@ -27,7 +27,7 @@ app.get("/infos",(req,res)=>{
         }
         else{
             data.push(fact);
-            data.push(fact);
+            data.push(fake);
         }
     
     
