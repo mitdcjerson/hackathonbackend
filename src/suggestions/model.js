@@ -69,6 +69,7 @@ const trainModel = async encoder => {
 };
 
 const suggestIcon = async (model, encoder, taskName, threshold) => {
+    console.log("MODEL:" + model + "ENCODER: " + encoder, "TASKNAME: " + taskName, "THRESHOLD: "+ threshold )
   if (!taskName.trim().includes(" ")) {
     return null;
   }
