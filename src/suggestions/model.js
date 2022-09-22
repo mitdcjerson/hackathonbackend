@@ -7,7 +7,7 @@ const trainTasks = learnTodos.concat(exerciseTodos);
 
 const MODEL_NAME = "suggestion-model";
 const N_CLASSES = 2;
-const FACT = "FACT";
+const FACT = "FACTS";
 const FAKE = "FAKE";
 const UNCERTAIN = "UNCERTAIN";
 
@@ -31,7 +31,7 @@ const trainModel = async encoder => {
   const xTrain = await encodeData(encoder, trainTasks);
 
   const yTrain = tf.tensor2d(
-    trainTasks.map(t => [t.result === FACT ? 1 : 0, t.result === FAKE ? 1 : 0])
+    trainTasks.map(t => ([t.results === FACT ? 1 : 0, t.results === FAKE ? 1 : 0]))
   );
 
   const model = tf.sequential();
@@ -46,25 +46,21 @@ const trainModel = async encoder => {
 
   model.compile({
     loss: "categoricalCrossentropy",
-    optimizer: tf.train.adam(0.001),
+    optimizer: tf.train.adam(0.002),
     metrics: ["accuracy"]
   });
 
  // const lossContainer = document.getElementById("loss-cont");
 
-  // await model.fit(xTrain, yTrain, {
-  //   batchSize: 32,
-  //   validationSplit: 0.1,
-  //   shuffle: true,
-  //   epochs: 150,
-  //   callbacks: tfvis.show.fitCallbacks(
-  //     null,
-  //     ["loss", "val_loss", "acc", "val_acc"],
-  //     {
-  //       callbacks: ["onEpochEnd"]
-  //     }
-  //   )
-  // });
+  await model.fit(xTrain, yTrain, {
+    batchSize: 32,
+    validationSplit: 0.1,
+    shuffle: true,
+    epochs: 150,
+    callbacks:["onEphocEnd"]
+
+    
+  });
 
   //await model.save(`localstorage://${MODEL_NAME}`);
 
@@ -76,20 +72,21 @@ const predictInfo = async (model, encoder, taskName, threshold) => {
   if (!taskName.trim().includes(" ")) {
     return null;
   }
+  taskName = taskName.toLowerCase();
   const xPredict = await encodeData(encoder, [{ text: taskName }]);
 
   const prediction = await model.predict(xPredict).data();
 
   console.log(prediction[0] +"" + prediction[1]);
 
-  if (prediction[0] > threshold) {
+  if (prediction[0] > threshold && prediction[0] > prediction[1] ) {
     return {
       result : prediction[0] * 100,
       status: FACT
     };
-  } else if (prediction[1] > threshold) {
+  } else if (prediction[1] > threshold  && prediction[1] > prediction[0]) {
     return {
-      result : prediction[0] * 100,
+      result : prediction[1] * 100,
       status: FAKE
     };
   } else {
@@ -100,4 +97,4 @@ const predictInfo = async (model, encoder, taskName, threshold) => {
   }
 };
 
-export { suggestIcon, trainModel };
+export { predictInfo, trainModel };

@@ -84,7 +84,7 @@ app.post("/infos", (req, res) => {
 
 app.post("/check", async (req, res) => {
 
-    const threshold = 0.30;
+    const threshold = 0.40;
     console.log(req.body.text);
     const predictedInfo = await predictInfo(trainedModel, sentenceEncoder, req.body.text, threshold);
     console.log(predictedInfo);
