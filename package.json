@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node -r esm src/index.js" ,
-    "dev": "nodemon -r esm src/index.js" 
+    "start": "node -r esm src/index.js",
+    "dev": "nodemon -r esm src/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,8 +20,12 @@
   },
   "homepage": "https://github.com/mitdcjerson/hackathonbackend#readme",
   "dependencies": {
+    "@tensorflow-models/universal-sentence-encoder": "^1.3.3",
+    "@tensorflow/tfjs": "^3.20.0",
+    "@tensorflow/tfjs-vis": "^1.5.1",
     "cors": "^2.8.5",
     "esm": "^3.2.25",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "nodemon": "^2.0.20"
   }
 }
