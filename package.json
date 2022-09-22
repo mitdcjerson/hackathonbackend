@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/mitdcjerson/hackathonbackend/issues"
   },
-  "homepage": "https://github.com/mitdcjerson/hackathonbackend#readme"
+  "homepage": "https://github.com/mitdcjerson/hackathonbackend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "esm": "^3.2.25",
+    "express": "^4.18.1"
+  }
 }
