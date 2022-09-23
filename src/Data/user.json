@@ -1,44 +1,87 @@
 [
-    {
-       "username" :"peter",
-       "password" :"12345"
+
+   {
+
+      "username" :"peter",
+
+      "password" :"5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5"
+
+   },
+
+   {
+
+       "username" :"Emily",
+
+       "password" :"375a8d377478aa67fc84736944381b6a197f7f40326b37a55e2a4cf86cc37326"
+
+    }
+
+    ,
+
+   {
+
+       "username" :"William",
+
+       "password" :"8b437b87f5bbf68d8bd8d8b9fa7c234a6b488d9bda2cfc2d459d1bcf97933088"
+
     },
+
     {
-        "username" :"Emily",
-        "password" :"64755"
-     }
-     ,
+
+       "username" :"Stephan",
+
+       "password" :"146e16019e331f7a11ce6bf648574970a67483eab0b28e03a8ec1b72e702a1b0"
+
+    },
+
+    
+
     {
-        "username" :"William",
-        "password" :"gdfg656"
-     },
-     {
-        "username" :"Stephan",
-        "password" :"987df"
-     },
-     
-     {
-        "username" :"Piers",
-        "password" :"987df"
-     },
-     {
-        "username" :"Cheryl",
-        "password" :"vbyrty"
-     },
-     {
-        "username" :"Whitney",
-        "password" :"vbyrty"
-     },
-     {
-        "username" :"Ella",
-        "password" :"vbyrty"
-     },
-     {
-        "username" :"Rusty",
-        "password" :"fhtyuvbyrty"
-     },
-     {
-        "username" :"Regina",
-        "password" :"fdg460="
-     }
+
+       "username" :"Piers",
+
+       "password" :"5f1b8f55d11fc5e477e89d083e69c04b95f8dfab021a91a3882e8ec42298860c"
+
+    },
+
+    {
+
+       "username" :"Cheryl",
+
+       "password" :"ed819d408ba508aea4a3aed44608b08e801d43cf8df097f94459592d297a411e"
+
+    },
+
+    {
+
+       "username" :"Whitney",
+
+       "password" :"4c5f6d35100ce0399d4be3e437a0a108ad0dcf73bbc5d14f4e2a8c1d2c79c045"
+
+    },
+
+    {
+
+       "username" :"Ella",
+
+       "password" :"d5d07478b15d20f21ff17734d7b774e8220f3eb5b37429be31dc1abb0dc9910c"
+
+    },
+
+    {
+
+       "username" :"Rusty",
+
+       "password" :"897681daac3c261203406cb67736a18681165d2df79686597322dc638eb3d9a3"
+
+    },
+
+    {
+
+       "username" :"Regina",
+
+       "password" :"7e4c95b632ddbf954f551f0850d6409bde751ed3351b455a0139eb2a94db618d"
+
+    }
+
 ]
